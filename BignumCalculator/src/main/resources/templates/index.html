@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+    <div id="calculator-app">
+        <form>
+            <input type="number" v-model="firstNumber" min="0">
+            <h3>*</h3>
+            <input type="number" v-model="secondNumber" min="0">
+            <h3>=</h3>
+            <h1>{{ result }}</h1>
+            <button v-on:click="submit" > Calculate </button>
+        </form>
+    </div>
+
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js">
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        new Vue({
+            el: "#calculator-app",
+            data() {
+                return {
+                    firstNumber: '0',
+                    secondNumber: '0',
+                    result: "hello"
+                }
+            },
+            methods: {
+                submit: function(e){
+                    e.preventDefault();
+                    const {firstNumber, secondNumber} = this;
+                    const string = firstNumber+"*"+secondNumber;
+                    console.log(string)
+                    axios.post('/calculate', string)
+                        .then((result) => {
+                            this.result = result;
+                        })
+                }
+            }
+        });
+    </script>
+</body>
+</html>
