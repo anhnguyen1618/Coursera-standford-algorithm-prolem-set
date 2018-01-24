@@ -7,9 +7,9 @@
 <body>
     <div id="calculator-app">
         <form>
-            <input type="number" v-model="firstNumber" min="0">
+            <input type="text" v-model="firstNumber">
             <h3>*</h3>
-            <input type="number" v-model="secondNumber" min="0">
+            <input type="text" v-model="secondNumber">
             <h3>=</h3>
             <h1>{{ result }}</h1>
             <button v-on:click="submit" > Calculate </button>
@@ -26,9 +26,9 @@
             el: "#calculator-app",
             data() {
                 return {
-                    firstNumber: '0',
-                    secondNumber: '0',
-                    result: "hello"
+                    firstNumber: '',
+                    secondNumber: '',
+                    result: ""
                 }
             },
             methods: {
@@ -37,9 +37,9 @@
                     const {firstNumber, secondNumber} = this;
                     const string = firstNumber+"*"+secondNumber;
                     console.log(string)
-                    axios.post('/calculate', string)
+                    axios.post('/calculate', string, {headers: { 'Content-Type': 'text/plain' }})
                         .then((result) => {
-                            this.result = result;
+                            this.result = result.data;
                         })
                 }
             }
