@@ -32,7 +32,7 @@ public class Quicksort {
             return 0;
         }
 
-        int pivotIndex = start;
+        int pivotIndex = chooseMedianPivot(array, start, end);
 //        int pivotIndex = end;
 //        int pivotIndex = chooseMedianPivot(array, start, end);
         int pivot = array.get(pivotIndex);
