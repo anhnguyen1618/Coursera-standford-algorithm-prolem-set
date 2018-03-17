@@ -61,7 +61,7 @@ public class Graph {
             for (Edge edge: currentNode.edges) {
                 int neighborIndex = edge.toNodeIndex;
                 Node neighborNode = getNodeFromIndex(edge.toNodeIndex);
-                
+
                 this.updateNodeDistanceRecord(neighborIndex, distanceFromStartOfHostNode, edge.length);
 
                 if (neighborNode.visited) {
