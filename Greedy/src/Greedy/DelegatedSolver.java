@@ -22,7 +22,7 @@ public class DelegatedSolver {
         }
     }
 
-    public void compute(Sorter sorter) throws FileNotFoundException {
+    public void compute(Sorter sorter) {
         Collections.sort(jobs, sorter::compareTo);
 
         System.out.println("Greedy result of "+ sorter.name +" is " + this.calculateCompleteTime());
